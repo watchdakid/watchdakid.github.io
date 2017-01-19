@@ -100,29 +100,49 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			       				</li>
        							<div class="clearfix"> </div>
        						</ul>
-                            <h4 align="center"> DISCLAIMER: For form below: After submission some funky text will show up. This is normal! Just go back to previous page. </h4>
-       							<form method="POST" action="https://script.google.com/macros/s/AKfycbw4oePwj-LhvygXm48P5CXz63izSw6XvTuIz_xTfeenLM3tPb8/exec">
-							    	<input name="FName" type="text" class="textbox" value=" First Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'First Name';}">
-                                    <input name="LName" type="text" class="textbox" value=" Last Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Last Name';}">
-							    	<input name="Email" type="text" class="textbox" value=" Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Your E-Mail';}">
-                                    <input name="Phone" type="text" class="textbox" value=" Phone Number" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone Number';}">
- <h7>Will you be attending?: </h7>                                   <input type="radio" name="Attend" value="Yes" checked> Yes
-  <input type="radio" name="Attend" value="No"> No<br><br>
-<h7>Party Size (Including You): </h7>
+                           <!-- <h4 align="center"> DISCLAIMER: For form below: After submission some funky text will show up. This is normal! Just go back to previous page. </h4> -->
+       							<form id='foo'>
+      <p>
+        <label>First Name</label>
+        <input id='fname' name='FName' type='text'>
+      </p>
+	  
+	 <p>
+        <label>Last Name</label>
+        <input id='LName' name='LName' type='text'>
+      </p>
+
+	  <p>
+        <label>Email Address</label>
+        <input id='email' name='Email' type='text'>
+      </p><p>
+        <label>Phone Number</label>
+        <input id='Phone' name='Phone'  onkeypress='validate(event)' type='text'>
+      </p>
+	  <p>
+	  <br> <h7><b>Will you be attending?: </b></h7>                                   
+	   <input type="radio" name="Attend" value="Yes" checked> Yes
+	   <input type="radio" name="Attend" value="No"> No<br>
+	</p>
+	<p>
+<br><h7><b>Party Size (Including You): </b></h7>
 <select name="PartySize">
   <option value="0 People">Sorry, Not Going</option>
   <option value="1 Person">1 - Just Me</option>
   <option value="2 People">2 - Me and Guest</option>
   <option value="3 or More">More than 2 - Explanation Needed Below</option>
-</select>
-										<div class="clear"> </div>
-								    <div>
-								    	<textarea name="MSG" value="Message:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Your Message ';}">Your Message</textarea>
-								    </div>	
-								   <div class="submit"> 
+  </select>
+	  </p><br>
+	  
+	
+        <label>Message</label>
+        <textarea id='message' name='MSG' rows='5'></textarea>
+    
+        <div id='success'></div>
+           <div class="submit"> 
 								    	<input type="submit" value="SEND " />
 					              </div>
-								</form>
+    </form>
 					  </div>
                              <div class="contact">
 				 	<div class="container">
@@ -179,12 +199,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										
 									});
 								</script>
-		<a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
- <div style="display:none;" id="thankyou_message">
-    <h2><em>Thanks</em> for contacting us!
-      We will get back to you soon!</h2>
-  </div>
-<script data-cfasync="false" type="text/javascript"
-src="https://cdn.rawgit.com/dwyl/html-form-send-email-via-google-script-without-server/master/form-submission-handler.js"></script>
+                                <script>
+ 
+function validate(evt) {
+  var theEvent = evt || window.event;
+  var key = theEvent.keyCode || theEvent.which;
+  key = String.fromCharCode( key );
+  var regex = /[0-9]|\./;
+  if( !regex.test(key) ) {
+    theEvent.returnValue = false;
+    if(theEvent.preventDefault) theEvent.preventDefault();
+  }
+}
+  </script>
+		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <!-- Custom Theme JavaScript -->
+  <script src='google-sheet.js'></script>
 </body>
 </html>
